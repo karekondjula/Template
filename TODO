@@ -9,8 +9,7 @@ Jetpack Compose
     http://joebirch.co/android/building-an-exploding-fab-transition-in-jetpack-compose/
 ViewBinding?
 
-Github CI
-    https://proandroiddev.com/how-to-github-actions-building-your-android-app-773779bcacab
+fix jacoco tests
 
 Flow + StateFlow + Http requests
     Moshi
