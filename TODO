@@ -1,0 +1,42 @@
+Hilt
+
+Try patern with UseCases instead of a single Repository(example for offline vs online data)
+    https://medium.com/google-design/material-components-for-android-1-2-0-is-now-available-aade483ed841
+
+Navigator + fragments
+
+Jetpack Compose
+    http://joebirch.co/android/building-an-exploding-fab-transition-in-jetpack-compose/
+ViewBinding?
+
+Github CI
+    https://proandroiddev.com/how-to-github-actions-building-your-android-app-773779bcacab
+
+Flow + StateFlow + Http requests
+    Moshi
+    Paging 3 jetpack
+        https://developer.android.com/topic/libraries/architecture/paging/v3-overview
+        https://codelabs.developers.google.com/codelabs/android-paging/#0
+    https://pokeapi.co/
+
+Room + coroutines
+
+MotionLayout
+
+SavedState API
+
+ActivityResult
+
+Analytics
+
+Firebase
+
+Unit Test + UI test
+
+https://developer.android.com/topic/libraries/app-startup
+
+https://developer.android.com/guide/navigation/navigation-programmatic#returning_a_result
+
+https://android-developers.googleblog.com/2020/09/prefer-storing-data-with-jetpack.html
+
+https://magdamiu.com/2020/08/10/smile-its-camerax-preview-and-capture/
