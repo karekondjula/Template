@@ -1,0 +1,6 @@
+package com.team2.template.model
+
+data class Pokemon(
+    val name: String,
+    val url: String
+)

@@ -1,9 +1,5 @@
-Hilt
-
-Try patern with UseCases instead of a single Repository(example for offline vs online data)
+Try pattern with UseCases instead of a single Repository(example for offline vs online data)
     https://medium.com/google-design/material-components-for-android-1-2-0-is-now-available-aade483ed841
-
-Navigator + fragments
 
 Jetpack Compose
     http://joebirch.co/android/building-an-exploding-fab-transition-in-jetpack-compose/

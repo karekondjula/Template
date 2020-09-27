@@ -1,13 +1,7 @@
 package com.team2.template
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
-@Suppress("unused")
-class TemplateApplication: Application() {
-
-    override fun onCreate() {
-        super.onCreate()
-
-    }
-
-}
+@HiltAndroidApp
+class TemplateApplication : Application()
