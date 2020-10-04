@@ -3,11 +3,15 @@ package com.team2.template.di
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.team2.template.BuildConfig
+import com.team2.template.repository.PokemonRepository
 import com.team2.template.service.PokemonApi
+import com.team2.template.usecase.GetPokemonsUseCase
+import com.team2.template.usecase.GetPokemonsUseCaseImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -15,6 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
+@ExperimentalCoroutinesApi
 @Module
 @InstallIn(ApplicationComponent::class)
 class AppModule {
@@ -28,7 +33,7 @@ class AppModule {
     @Provides
     @Singleton
     fun provideOkHttpClient() =
-        if (BuildConfig.DEBUG) { // debug ON
+        if (BuildConfig.DEBUG) {
             val logger = HttpLoggingInterceptor()
             logger.level = HttpLoggingInterceptor.Level.BODY
             OkHttpClient.Builder()
@@ -54,4 +59,10 @@ class AppModule {
     @Provides
     @Singleton
     fun providePokemonApi(retrofit: Retrofit): PokemonApi = retrofit.create(PokemonApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideGetPokemonsUseCase(pokemonRepository: PokemonRepository): GetPokemonsUseCase {
+        return GetPokemonsUseCaseImpl(pokemonRepository)
+    }
 }

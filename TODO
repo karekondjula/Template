@@ -1,5 +1,8 @@
-Try pattern with UseCases instead of a single Repository(example for offline vs online data)
-    https://medium.com/google-design/material-components-for-android-1-2-0-is-now-available-aade483ed841
+Flow + StateFlow + Http requests
+    Moshi
+    Paging 3 jetpack
+        https://developer.android.com/topic/libraries/architecture/paging/v3-overview
+        https://codelabs.developers.google.com/codelabs/android-paging/#0
 
 Jetpack Compose
     http://joebirch.co/android/building-an-exploding-fab-transition-in-jetpack-compose/
@@ -7,12 +10,7 @@ ViewBinding?
 
 fix jacoco tests
 
-Flow + StateFlow + Http requests
-    Moshi
-    Paging 3 jetpack
-        https://developer.android.com/topic/libraries/architecture/paging/v3-overview
-        https://codelabs.developers.google.com/codelabs/android-paging/#0
-    https://pokeapi.co/
+Pull request CI setup
 
 Room + coroutines
 

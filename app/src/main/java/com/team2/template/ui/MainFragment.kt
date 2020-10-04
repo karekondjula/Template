@@ -9,7 +9,11 @@ import androidx.lifecycle.Observer
 import com.team2.template.R
 import com.team2.template.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.InternalCoroutinesApi
 
+@ExperimentalCoroutinesApi
+@InternalCoroutinesApi
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.fragment_main) {
 
@@ -18,12 +22,12 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        userViewModel.data.observe(viewLifecycleOwner, Observer {
+        userViewModel.data.observe(viewLifecycleOwner, {
             it.results.forEach { user -> Log.d(">>>", user.url) }
         })
 
-        userViewModel.loadingState.observe(viewLifecycleOwner, Observer {
-             Log.d(">>> state", it.toString())
+        userViewModel.loadingState.observe(viewLifecycleOwner, {
+            Log.d(">>> state", it.toString())
         })
     }
 }

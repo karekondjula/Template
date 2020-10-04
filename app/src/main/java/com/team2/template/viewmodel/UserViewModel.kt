@@ -2,21 +2,22 @@ package com.team2.template.viewmodel
 
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import com.team2.template.model.Pokemon
+import androidx.lifecycle.*
 import com.team2.template.model.PokemonsResult
-import com.team2.template.repository.PokemonRepository
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.team2.template.usecase.GetPokemonsUseCase
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.InternalCoroutinesApi
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.launch
 
+@ExperimentalCoroutinesApi
+@InternalCoroutinesApi
 class UserViewModel @ViewModelInject constructor(
-    private val repo: PokemonRepository,
+    private val getPokemonsUseCase: GetPokemonsUseCase,
     @Assisted private val savedStateHandle: SavedStateHandle
-) : ViewModel(), Callback<PokemonsResult> {
+) : ViewModel() {
 
     private val _loadingState = MutableLiveData<LoadingState>()
     val loadingState: LiveData<LoadingState>
@@ -31,20 +32,16 @@ class UserViewModel @ViewModelInject constructor(
     }
 
     private fun fetchData() {
-        _loadingState.postValue(LoadingState.LOADING)
-        repo.getAllPokemons().enqueue(this)
-    }
+        viewModelScope.launch {
+            getPokemonsUseCase.getPokemons()
+                .onStart { _loadingState.postValue(LoadingState.LOADING) }
+                .catch {
+                    // TODO add error message to PokemonsResult
+//                    _loadingState.postValue(LoadingState.error(pokemonResultList.errorBody().toString()))
+                }.collect { pokemonResultList ->
+                    _data.value = pokemonResultList
+                }
 
-    override fun onFailure(call: Call<PokemonsResult>, t: Throwable) {
-        _loadingState.postValue(LoadingState.error(t.message))
-    }
-
-    override fun onResponse(call: Call<PokemonsResult>, response: Response<PokemonsResult>) {
-        if (response.isSuccessful) {
-            _data.postValue(response.body())
-            _loadingState.postValue(LoadingState.LOADED)
-        } else {
-            _loadingState.postValue(LoadingState.error(response.errorBody().toString()))
         }
     }
 }
