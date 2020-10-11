@@ -7,24 +7,22 @@ import com.team2.template.model.PokemonsResult
 import com.team2.template.usecase.GetPokemonsUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 @ExperimentalCoroutinesApi
 @InternalCoroutinesApi
-class UserViewModel @ViewModelInject constructor(
+class PokemonsViewModel @ViewModelInject constructor(
     private val getPokemonsUseCase: GetPokemonsUseCase,
     @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private val _loadingState = MutableLiveData<LoadingState>()
-    val loadingState: LiveData<LoadingState>
+    private val _loadingState = MutableStateFlow(LoadingState.LOADING)
+    val loadingState: StateFlow<LoadingState>
         get() = _loadingState
 
-    private val _data = MutableLiveData<PokemonsResult>()
-    val data: LiveData<PokemonsResult>
+    private val _data = MutableStateFlow<PokemonsResult?>(null)
+    val data: StateFlow<PokemonsResult?>
         get() = _data
 
     init {
@@ -34,7 +32,7 @@ class UserViewModel @ViewModelInject constructor(
     private fun fetchData() {
         viewModelScope.launch {
             getPokemonsUseCase.getPokemons()
-                .onStart { _loadingState.postValue(LoadingState.LOADING) }
+                .onStart { _loadingState.value = LoadingState.LOADING }
                 .catch {
                     // TODO add error message to PokemonsResult
 //                    _loadingState.postValue(LoadingState.error(pokemonResultList.errorBody().toString()))

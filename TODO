@@ -1,20 +1,16 @@
-Flow + StateFlow + Http requests
+Http requests
     Moshi
     Paging 3 jetpack
         https://developer.android.com/topic/libraries/architecture/paging/v3-overview
         https://codelabs.developers.google.com/codelabs/android-paging/#0
 
-Jetpack Compose
-    http://joebirch.co/android/building-an-exploding-fab-transition-in-jetpack-compose/
-ViewBinding?
+Room + coroutines
 
 fix jacoco tests
 
-Pull request CI setup
-
-Room + coroutines
-
 MotionLayout
+
+Pull request CI setup
 
 SavedState API
 
@@ -22,9 +18,14 @@ ActivityResult
 
 Analytics
 
+R8 proguard optimization
+
 Firebase
 
 Unit Test + UI test
+
+Jetpack Compose
+    http://joebirch.co/android/building-an-exploding-fab-transition-in-jetpack-compose/
 
 https://developer.android.com/topic/libraries/app-startup
 
@@ -33,3 +34,5 @@ https://developer.android.com/guide/navigation/navigation-programmatic#returning
 https://android-developers.googleblog.com/2020/09/prefer-storing-data-with-jetpack.html
 
 https://magdamiu.com/2020/08/10/smile-its-camerax-preview-and-capture/
+
+static analysis tool ktlint 
