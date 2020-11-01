@@ -2,9 +2,14 @@ package com.team2.template.service
 
 import com.team2.template.model.PokemonsResult
 import retrofit2.http.GET
+import retrofit2.http.Query
+import retrofit2.http.Url
 
 interface PokemonApi {
 
-    @GET("pokemon?limit=20")
-    suspend fun getListOfPokemons(): PokemonsResult
+    @GET("pokemon")
+    suspend fun getListOfPokemons(@Query("limit") limit: Int = 50): PokemonsResult
+
+    @GET
+    suspend fun getListOfPokemonsByUrl(@Url url: String?): PokemonsResult
 }

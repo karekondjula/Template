@@ -1,8 +1,11 @@
 package com.team2.template.di
 
+import androidx.room.Room
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.team2.template.BuildConfig
+import com.team2.template.TemplateApplication
+import com.team2.template.database.PokemonDatabase
 import com.team2.template.repository.PokemonRepository
 import com.team2.template.service.PokemonApi
 import com.team2.template.usecase.GetPokemonsUseCase
@@ -37,9 +40,9 @@ class AppModule {
             val logger = HttpLoggingInterceptor()
             logger.level = HttpLoggingInterceptor.Level.BODY
             OkHttpClient.Builder()
-                .addInterceptor(logger)
-                .readTimeout(100, TimeUnit.SECONDS)
-                .connectTimeout(100, TimeUnit.SECONDS)
+//                .addInterceptor(logger)
+                .readTimeout(5, TimeUnit.SECONDS)
+                .connectTimeout(5, TimeUnit.SECONDS)
                 .build()
         } else // debug OFF
             OkHttpClient.Builder()
@@ -64,5 +67,14 @@ class AppModule {
     @Singleton
     fun provideGetPokemonsUseCase(pokemonRepository: PokemonRepository): GetPokemonsUseCase {
         return GetPokemonsUseCaseImpl(pokemonRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun providePokemonDatabase(app: TemplateApplication): PokemonDatabase {
+        return Room.databaseBuilder(
+            app,
+            PokemonDatabase::class.java, "pokemon-database"
+        ).build()
     }
 }
