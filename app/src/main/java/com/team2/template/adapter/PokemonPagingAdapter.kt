@@ -3,10 +3,13 @@ package com.team2.template.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.transform.CircleCropTransformation
 import com.team2.template.R
 import com.team2.template.model.Pokemon
 
@@ -16,17 +19,22 @@ class PokemonPagingAdapter :
     inner class PokemonViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val idTextView: TextView = view.findViewById(R.id.pokemon_id)
+        private val imageView: ImageView = view.findViewById(R.id.pokemon_image)
         private val pokemonTextView: TextView = view.findViewById(R.id.pokemon_name)
 
-        fun bindPokemon(position: Int, pokemon: Pokemon) {
-            idTextView.text = position.toString()
+        fun bindPokemon(pokemon: Pokemon) {
+            idTextView.text = pokemon.id.toString()
             pokemonTextView.text = pokemon.name
+            imageView.load(pokemon.sprites.image) {
+                crossfade(true)
+                transformations(CircleCropTransformation())
+            }
         }
     }
 
     override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {
         getItem(position)?.let { pokemon ->
-            holder.bindPokemon(position, pokemon)
+            holder.bindPokemon(pokemon)
         }
     }
 

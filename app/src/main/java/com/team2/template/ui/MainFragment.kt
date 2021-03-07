@@ -52,7 +52,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         )
         binding.list.layoutManager = LinearLayoutManager(requireContext())
 
-        lifecycleScope.launchWhenCreated {
+        lifecycleScope.launchWhenStarted {
             pokemonsViewModel.fetchPokemons().collectLatest {
                 pagingAdapter.submitData(it)
             }

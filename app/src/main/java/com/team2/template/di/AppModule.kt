@@ -1,19 +1,14 @@
 package com.team2.template.di
 
-import android.app.Application
 import android.content.Context
 import androidx.paging.ExperimentalPagingApi
 import androidx.room.Room
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import com.team2.template.BuildConfig
-import com.team2.template.TemplateApplication
 import com.team2.template.database.PokemonDatabase
 import com.team2.template.repository.PokemonRepository
 import com.team2.template.service.PokemonApi
 import com.team2.template.usecase.GetPokemonsUseCase
 import com.team2.template.usecase.GetPokemonsUseCaseImpl
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,10 +18,9 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
-
 
 @ExperimentalPagingApi
 @ExperimentalCoroutinesApi
@@ -36,9 +30,6 @@ class AppModule {
 
     @Provides
     fun provideBaseUrl() = "https://pokeapi.co/api/v2/"
-
-    @Provides
-    fun provideGson(): Gson = GsonBuilder().setLenient().create()
 
     @Provides
     @Singleton
@@ -63,7 +54,7 @@ class AppModule {
         Retrofit.Builder()
             .baseUrl(BaseURL)
             .client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create())
             .build()
 
     @Provides

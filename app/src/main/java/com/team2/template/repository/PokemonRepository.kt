@@ -21,9 +21,9 @@ class PokemonRepository @Inject constructor(
     fun getAllPokemons(): Flow<PagingData<Pokemon>> {
         return Pager(
             PagingConfig(
-                pageSize = 20,
+                pageSize = 100,
                 enablePlaceholders = false,
-                prefetchDistance = 25,
+                prefetchDistance = 120,
             ),
             remoteMediator = PokemonRemoteMediator(
                 pokemonApi = api,

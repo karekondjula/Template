@@ -1,21 +1,13 @@
-https://medium.com/androiddevelopers/using-ktx-libraries-da1dc81c6ecf
-
-Http requests
-    Moshi
-    https://www.raywenderlich.com/12244218-paging-library-for-android-with-kotlin-creating-infinite-lists
+Jetpack Compose
+    http://joebirch.co/android/building-an-exploding-fab-transition-in-jetpack-compose/
+    https://www.rockandnull.com/jetpack-compose-navigation/
+    https://proandroiddev.com/navigating-in-a-pure-jetpack-compose-project-part-1-8654533d6670
 
 ActivityResult
     https://blog.stylingandroid.com/activity-result-contract-basics/ https://blog.stylingandroid.com/activity-result-contract-outside-the-activity/
 
 Navigation with SafeArgs
     https://medium.com/androiddevelopers/navigating-with-safeargs-bf26c17b1269
-
-Jetpack Compose
-    http://joebirch.co/android/building-an-exploding-fab-transition-in-jetpack-compose/
-    https://www.rockandnull.com/jetpack-compose-navigation/
-    https://proandroiddev.com/navigating-in-a-pure-jetpack-compose-project-part-1-8654533d6670
-
-MotionLayout
 
 SavedState API
 
@@ -46,8 +38,6 @@ R8 proguard optimization
 https://developer.android.com/guide/navigation/navigation-programmatic#returning_a_result
 
 https://android-developers.googleblog.com/2020/09/prefer-storing-data-with-jetpack.html
-
-https://magdamiu.com/2020/08/10/smile-its-camerax-preview-and-capture/
 
 static analysis tool ktlint 
 

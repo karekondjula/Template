@@ -24,24 +24,30 @@ class PokemonRemoteMediator(
     ): MediatorResult {
 
         return try {
+//            Log.d("/// loadType", "--------------------------------------")
+//            Log.d("/// loadType", "$loadType")
+//            Log.d("/// state.lastItem", "${state.lastItemOrNull()}")
             val loadKey = when (loadType) {
                 LoadType.REFRESH -> null
                 LoadType.PREPEND -> return MediatorResult.Success(endOfPaginationReached = true)
                 LoadType.APPEND -> {
-                    state.lastItemOrNull()
-                        ?: return MediatorResult.Success(endOfPaginationReached = true)
                     pokemonDatabase.pokemonKeysDao().getPokemonKeys().firstOrNull()?.next
+                        ?: return MediatorResult.Success(endOfPaginationReached = true)
                 }
             }
 
+//            Log.d("/// loadKey", "$loadKey")
             val response = if (loadKey == null)
                 pokemonApi.getListOfPokemons(limit = state.config.pageSize)
             else
                 pokemonApi.getListOfPokemonsByUrl(loadKey)
 
+
             if (response.results.isNotEmpty()) {
+                val pokemons = response.results.map{ p -> pokemonApi.getPokemonByUrl(p.url)}
+
                 pokemonDatabase.withTransaction {
-                    pokemonDatabase.pokemonsDao().savePokemons(response.results)
+                    pokemonDatabase.pokemonsDao().savePokemons(pokemons)
                     pokemonDatabase.pokemonKeysDao()
                         .savePokemonKeys(PokemonKeys(0, response.previous, response.next))
                 }

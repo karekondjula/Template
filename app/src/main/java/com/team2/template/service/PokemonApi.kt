@@ -1,5 +1,6 @@
 package com.team2.template.service
 
+import com.team2.template.model.Pokemon
 import com.team2.template.model.PokemonsResult
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -12,4 +13,7 @@ interface PokemonApi {
 
     @GET
     suspend fun getListOfPokemonsByUrl(@Url url: String?): PokemonsResult
+
+    @GET
+    suspend fun getPokemonByUrl(@Url url: String?): Pokemon
 }
