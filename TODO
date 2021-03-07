@@ -1,34 +1,47 @@
+https://medium.com/androiddevelopers/using-ktx-libraries-da1dc81c6ecf
+
 Http requests
     Moshi
     https://www.raywenderlich.com/12244218-paging-library-for-android-with-kotlin-creating-infinite-lists
+
+ActivityResult
+    https://blog.stylingandroid.com/activity-result-contract-basics/ https://blog.stylingandroid.com/activity-result-contract-outside-the-activity/
+
+Navigation with SafeArgs
+    https://medium.com/androiddevelopers/navigating-with-safeargs-bf26c17b1269
+
+Jetpack Compose
+    http://joebirch.co/android/building-an-exploding-fab-transition-in-jetpack-compose/
+    https://www.rockandnull.com/jetpack-compose-navigation/
+    https://proandroiddev.com/navigating-in-a-pure-jetpack-compose-project-part-1-8654533d6670
+
+MotionLayout
+
+SavedState API
+
+https://www.bignerdranch.com/blog/an-updated-look-at-launching-a-splash-screen/
 
 Firebase
 
 Material design components library MDC
 
+Unit Test + UI test + dagger mocks
+    https://dev.to/adevintaspain/making-android-ui-testing-enjoyable-3a1n
+    https://androidweekly.us2.list-manage.com/track/click?u=887caf4f48db76fd91e20a06d&id=7263a35578&e=d04e83b184    
+    https://blog.thefuntasty.com/integration-testing-with-dagger-b568d298b0b
+
 fix jacoco tests
 
-MotionLayout
-
 Pull request CI setup
-
-SavedState API
-
-ActivityResult
 
 DataStore - https://blog.stylingandroid.com/datastore-models/
     Wire - codegen
 
 Analytics
+    https://proandroiddev.com/android-kotlin-analytics-made-simple-c494caa0e787
 
 R8 proguard optimization
-
-Unit Test + UI test
-
-Jetpack Compose
-    http://joebirch.co/android/building-an-exploding-fab-transition-in-jetpack-compose/
-
-https://developer.android.com/topic/libraries/app-startup
+    https://krossovochkin.com/posts/2021_01_18_debugging_proguard_configuration_issues/
 
 https://developer.android.com/guide/navigation/navigation-programmatic#returning_a_result
 
@@ -40,7 +53,6 @@ static analysis tool ktlint
 
 https://medium.com/androiddevelopers/biometric-authentication-on-android-part-1-264523bce85d
 
-Navigation with SafeArgs
-    https://medium.com/androiddevelopers/navigating-with-safeargs-bf26c17b1269
-
 https://blog.jakelee.co.uk/accessing-android-app-secret-from-github-actions-using-gradle/
+
+https://checkstyle.sourceforge.io/?source=:em:nw:mt::RC_WWMK190726P00001:NSL400052571

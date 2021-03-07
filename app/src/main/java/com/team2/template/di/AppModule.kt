@@ -1,5 +1,8 @@
 package com.team2.template.di
 
+import android.app.Application
+import android.content.Context
+import androidx.paging.ExperimentalPagingApi
 import androidx.room.Room
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -10,10 +13,12 @@ import com.team2.template.repository.PokemonRepository
 import com.team2.template.service.PokemonApi
 import com.team2.template.usecase.GetPokemonsUseCase
 import com.team2.template.usecase.GetPokemonsUseCaseImpl
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -22,9 +27,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
+
+@ExperimentalPagingApi
 @ExperimentalCoroutinesApi
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 class AppModule {
 
     @Provides
@@ -71,9 +78,9 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun providePokemonDatabase(app: TemplateApplication): PokemonDatabase {
+    fun providePokemonDatabase(@ApplicationContext appContext: Context): PokemonDatabase {
         return Room.databaseBuilder(
-            app,
+            appContext,
             PokemonDatabase::class.java, "pokemon-database"
         ).build()
     }

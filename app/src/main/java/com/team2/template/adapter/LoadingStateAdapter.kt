@@ -10,7 +10,7 @@ import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.team2.template.R
-import com.team2.template.databinding.LoadStateItemBinding
+import com.team2.template.databinding.ItemLoadStateBinding
 
 class LoadingStateAdapter(private val retry: () -> Unit) :
     LoadStateAdapter<LoadingStateAdapter.LoadStateViewHolder>() {
@@ -26,9 +26,9 @@ class LoadingStateAdapter(private val retry: () -> Unit) :
         retry: () -> Unit
     ) : RecyclerView.ViewHolder(
         LayoutInflater.from(parent.context)
-            .inflate(R.layout.load_state_item, parent, false)
+            .inflate(R.layout.item_load_state, parent, false)
     ) {
-        private val binding = LoadStateItemBinding.bind(itemView)
+        private val binding = ItemLoadStateBinding.bind(itemView)
         private val progressBar: ProgressBar = binding.loadProgressBar
         private val errorMsg: TextView = binding.loadErrorMsg
         private val retry: Button = binding.loadRetryButton.also {
