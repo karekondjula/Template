@@ -1,26 +1,32 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.kotlin_version = "1.4.31"
-    ext.hilt_version = '2.32-alpha'
+    ext.kotlin_version = "1.6.10"
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.2'
+        classpath 'com.android.tools.build:gradle:7.1.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jacoco:org.jacoco.core:0.8.5"
-        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
 
+ext {
+    compile_sdk_version = 32
+//    build_tools_version = "32.0.0"
+    min_sdk_version = 23
+    target_sdk_version = 32
+    junit_version = '4.13.2'
+}
+
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 }
 

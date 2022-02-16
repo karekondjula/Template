@@ -1,2 +1,4 @@
+include ':core'
+include ':pokemon'
 include ':app'
 rootProject.name = "Template"

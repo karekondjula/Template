@@ -1,4 +1,4 @@
-package com.team2.template
+package com.team2.pokemon
 
 import org.junit.Test
 
